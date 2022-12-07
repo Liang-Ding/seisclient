@@ -9,6 +9,7 @@ __pycache__/
 # develop folder
 dev_*/
 dev/
+.idea/
 
 # Distribution / packaging
 .Python
