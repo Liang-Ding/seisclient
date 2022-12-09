@@ -1,5 +1,6 @@
 # SEISClient
 
+![SeisClient Logo](doc/images/seisclient_logo.svg)
 SeisClient is a python package to request accurate 3D Greens' function and synthetic waveform from [SeisCloud](https://seis.cloud). 
 
 For basic install:
