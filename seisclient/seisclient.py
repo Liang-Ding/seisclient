@@ -145,6 +145,8 @@ class SeisClientBase(dbBase):
 
         # Save it as pickle file for future use.
         if b_save:
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
             try:
                 with open(f_path, 'wb') as f:
                     pickle.dump(data, f)
@@ -199,20 +201,6 @@ class SeisClient(SeisClientBase):
     def __init__(self, db_url=None, db_port=None):
         super().__init__(db_url=db_url, db_port=db_port)
 
-    def get_greens_fk(self, model, station, origin, save_dir):
-        '''
-            Request FK-type Greens function.
-            SGT from server, FKGF by SeisGen.
-        '''
-
-        sgt = self.request_sgt(model, station, origin, save_dir, data_type='SGT')
-        fk = DSGTMgr(None, None, None, True).set_dt(self.dt_gf).get_fk_greens_function_next(sgt, station, origin)
-
-        # from m/(n.m) -> the unit of fk-type Greens function :10^-20 cm/(dyne cm)
-        factor = 1E15
-        for tr in fk:
-            tr.data = tr.data * factor
-        return fk
 
     def get_greens_3DMT(self, model, station, origin, save_dir):
         '''

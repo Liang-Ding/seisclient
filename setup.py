@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="seisclient",
-    version="0.0.1",
+    version="0.0.2",
     author="Liang Ding",
     author_email="myliang.ding@mail.utoronto.ca",
     description="Python package to request accurate 3D Greens' function and synthetic waveform from SeisCloud.",
